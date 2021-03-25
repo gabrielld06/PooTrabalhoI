@@ -16,15 +16,7 @@ public class Paciente {
     private String endereco;
     private String contato;
     private String convenio;
-    private DadosAdicionais dadosAdicionais;
-
-    public Paciente(String nome, String dataNascimento, String endereco, String contato, String convenio) {
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
-        this.contato = contato;
-        this.convenio = convenio;
-    }    
+    private DadosAdicionais dadosAdicionais;   
     
     public Paciente() {
         

@@ -51,26 +51,60 @@ public class Secretaria extends Usuario {
         novoPaciente.setContato(contato);
         novoPaciente.setConvenio(convenio);
         
-        dados.adiciona(novoPaciente);
+        dados.adicionaPaciente(novoPaciente);
+        
+        System.out.println("\nPaciente cadastrado com sucesso");
     }
     
-    public void atualizaPaciente() {
+    public void atualizaPaciente(Dados dados) {
+        Scanner leitura = new Scanner(System.in);
+        System.out.print("\nDigite o nome do paciente a ser atualizado: ");
+        String nome = leitura.nextLine();
+        int indice = dados.encontraPaciente(nome);
+        if(indice != -1) {
+            System.out.print("\nDigite as informações a serem atualizadas");
+            System.out.print("\nPrecione \"Enter\", caso nao queira alterar uma informação");
+            System.out.print("\nDigite o novo nome do paciente: ");
+            String novoNome = leitura.nextLine();
+            System.out.print("\nDigite a nova data de nascimento do paciente: ");
+            String dataNascimento = leitura.nextLine();
+            System.out.print("\nDigite o novo endereco do paciente: ");
+            String endereco = leitura.nextLine();
+            System.out.print("\nDigite o novo contato do paciente: ");
+            String contato = leitura.nextLine();
+            System.out.print("\nDigite o novo convenio do paciente: ");
+            String convenio = leitura.nextLine();
+            
+            dados.atualizaPaciente(indice, novoNome, dataNascimento, endereco, contato, convenio);
+            
+            System.out.println("\nPaciente atualizado com sucesso");
+        } else {
+            System.out.println("\nPaciente não encontrado");
+        }
+    }
+    
+    public void removePaciente(Dados dados) {
+        Scanner leitura = new Scanner(System.in);
+        System.out.print("\nDigite o nome do paciente a ser removido: ");
+        String nome = leitura.nextLine();
+        int indice = dados.encontraPaciente(nome);
+        if(indice != -1) {
+            dados.removePaciente(indice);
+            System.out.println("\nPaciente removido com sucesso");
+        } else {
+            System.out.println("\nPaciente não encontrado");
+        }
+    }
+    
+    public void cadastraConsulta(Dados dados) {
         
     }
     
-    public void removePaciente() {
+    public void atualizaConsulta(Dados dados) {
         
     }
     
-    public void cadastraConsulta() {
-        
-    }
-    
-    public void atualizaConsulta() {
-        
-    }
-    
-    public void removeConsulta() {
+    public void removeConsulta(Dados dados) {
         
     }
     

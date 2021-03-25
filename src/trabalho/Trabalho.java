@@ -60,19 +60,19 @@ public class Trabalho {
                             usuario.cadastraPaciente(dados);
                             break;
                         case 2:
-                            usuario.atualizaPaciente();
+                            usuario.atualizaPaciente(dados);
                             break;
                         case 3:
-                            usuario.removePaciente();
+                            usuario.removePaciente(dados);
                             break;
                         case 4:
-                            usuario.cadastraConsulta();
+                            usuario.cadastraConsulta(dados);
                             break;
                         case 5:
-                            usuario.atualizaConsulta();
+                            usuario.atualizaConsulta(dados);
                             break;
                         case 6:
-                            usuario.removeConsulta();
+                            usuario.removeConsulta(dados);
                             break;
                         case 7:
                             usuario.gerarRelatorio();

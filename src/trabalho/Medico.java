@@ -32,23 +32,23 @@ public class Medico extends Usuario {
         
     }
     
-    public void atualizaPaciente() {
+    public void atualizaPaciente(Dados dados) {
         
     }
     
-    public void removePaciente() {
+    public void removePaciente(Dados dados) {
         
     }
     
-    public void cadastraConsulta() {
+    public void cadastraConsulta(Dados dados) {
         
     }
     
-    public void atualizaConsulta() {
+    public void atualizaConsulta(Dados dados) {
         
     }
     
-    public void removeConsulta() {
+    public void removeConsulta(Dados dados) {
         
     }
     

@@ -13,37 +13,60 @@ import java.util.ArrayList;
  */
 public class Dados {
     private ArrayList<Paciente> listaPacientes = new ArrayList();
+    private ArrayList<Consulta> listaConsultas = new ArrayList();
         
-    public void adiciona(Paciente paciente) {
+    public void adicionaPaciente(Paciente paciente) {
         listaPacientes.add(paciente);
     }
     
-    public boolean remove(Paciente paciente) {
-        return listaPacientes.remove(paciente);
+    public void adicionaConsulta(Consulta consulta) {
+        listaConsultas.add(consulta);
     }
     
-    public int encontraPaciente(Paciente paciente) {
+    public boolean removePaciente(int i) {
+        return listaPacientes.remove(listaPacientes.get(i));
+    }
+    
+    public boolean removeConsulta(int i) {
+        return listaConsultas.remove(listaConsultas.get(i));
+    }
+    
+    public int encontraPaciente(String nomePaciente) {
         for(int i = 0; i < listaPacientes.size(); i++) {
-            if(listaPacientes.get(i).getNome().equals(paciente.getNome())) {
+            if(listaPacientes.get(i).getNome().equals(nomePaciente)) {
                 return i;
             }
         }
         return -1;
     }
     
-    public boolean atualiza(Paciente paciente) {
-        int index = encontraPaciente(paciente);
-        if(index != -1) {
-            listaPacientes.set(index, paciente);
-            return true;
+    public void atualizaPaciente(int i, String novoNome, String dataNascimento, String endereco, String contato, String convenio) {
+        if(!novoNome.equals("")){
+            listaPacientes.get(i).setNome(novoNome);
         }
-        return false;
+        if(!dataNascimento.equals("")){
+            listaPacientes.get(i).setDataNascimento(dataNascimento);
+        }
+        if(!endereco.equals("")){
+            listaPacientes.get(i).setEndereco(endereco);
+        }
+        if(!contato.equals("")){
+            listaPacientes.get(i).setContato(contato);
+        }
+        if(!convenio.equals("")){
+            listaPacientes.get(i).setConvenio(convenio);
+        }    
     }
     
     public void listaPacientes() {
         System.out.println("===========PACIENTES===========");
         for(int i = 0; i < listaPacientes.size(); i++) {
             System.out.println((i+1) + " - " + listaPacientes.get(i).getNome());
+            System.out.println("    " + listaPacientes.get(i).getDataNascimento());
+            System.out.println("    " + listaPacientes.get(i).getEndereco());
+            System.out.println("    " + listaPacientes.get(i).getContato());
+            System.out.println("    " + listaPacientes.get(i).getConvenio());
+            System.out.println("-------------------------------");
         }
         System.out.println("===============================");
     }

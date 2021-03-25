@@ -28,24 +28,24 @@ public class TipoUsuario {
         usuario.cadastraPaciente(dados);
     }
     
-    public void atualizaPaciente() {
-        usuario.atualizaPaciente();
+    public void atualizaPaciente(Dados dados) {
+        usuario.atualizaPaciente(dados);
     }
     
-    public void removePaciente() {
-        usuario.removePaciente();
+    public void removePaciente(Dados dados) {
+        usuario.removePaciente(dados);
     }
     
-    public void cadastraConsulta() {
-        usuario.cadastraConsulta();
+    public void cadastraConsulta(Dados dados) {
+        usuario.cadastraConsulta(dados);
     }
     
-    public void atualizaConsulta() {
-        usuario.atualizaConsulta();
+    public void atualizaConsulta(Dados dados) {
+        usuario.atualizaConsulta(dados);
     }
     
-    public void removeConsulta() {
-        usuario.removeConsulta();
+    public void removeConsulta(Dados dados) {
+        usuario.removeConsulta(dados);
     }
     
     public void gerarRelatorio() {
