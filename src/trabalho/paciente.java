@@ -10,70 +10,74 @@ package trabalho;
  *
  * @author Gabriel
  */
-public class paciente {
+public class Paciente {
     private String nome;
     private String dataNascimento;
     private String endereco;
     private String contato;
     private String convenio;
-    private String dadosAdicionais;
+    private DadosAdicionais dadosAdicionais;
 
-    public paciente(String nome, String dataNascimento, String endereco, String contato, String convenio, String dadosAdicionais) {
+    public Paciente(String nome, String dataNascimento, String endereco, String contato, String convenio) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.contato = contato;
         this.convenio = convenio;
-        this.dadosAdicionais = dadosAdicionais;
-    }
+    }    
+    
+    public Paciente() {
+        
+    }    
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
-    
+
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
     public String getDataNascimento() {
-        return this.dataNascimento;
+        return dataNascimento;
     }
-    
+
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-    
+
     public String getEndereco() {
-        return this.endereco;
+        return endereco;
     }
-    
+
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    
+
     public String getContato() {
-        return this.contato;
+        return contato;
     }
-    
+
     public void setContato(String contato) {
         this.contato = contato;
     }
-    
+
     public String getConvenio() {
-        return this.convenio;
+        return convenio;
     }
-    
+
     public void setConvenio(String convenio) {
         this.convenio = convenio;
     }
-    
-    public String getDadosAdicionais() {
-        return this.dadosAdicionais;
+
+    public DadosAdicionais getDadosAdicionais() {
+        return dadosAdicionais;
     }
-    
-    public void setDadosAdicionais(String dadosAdicionais) {
+
+    public void setDadosAdicionais(DadosAdicionais dadosAdicionais) {
         this.dadosAdicionais = dadosAdicionais;
     }
+    
     
     
  }
