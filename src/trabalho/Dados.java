@@ -14,12 +14,15 @@ import java.util.ArrayList;
 public class Dados {
     private ArrayList<Paciente> listaPacientes = new ArrayList();
     private ArrayList<Consulta> listaConsultas = new ArrayList();
+    private int idConsulta = 1;
         
     public void adicionaPaciente(Paciente paciente) {
         listaPacientes.add(paciente);
     }
     
     public void adicionaConsulta(Consulta consulta) {
+        consulta.setIdConsulta(idConsulta);
+        idConsulta++;
         listaConsultas.add(consulta);
     }
     
