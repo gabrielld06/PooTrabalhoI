@@ -97,15 +97,84 @@ public class Secretaria extends Usuario {
     }
     
     public void cadastraConsulta(Dados dados) {
-        
+        Scanner leitura = new Scanner(System.in);
+        Consulta novaConsulta = new Consulta();
+        System.out.print("\nDigite a data da consulta: ");
+        String data = leitura.nextLine();
+        System.out.print("\nDigite o horario da consulta: ");
+        String horario = leitura.nextLine();
+        System.out.print("\nDigite o nome do medico: ");
+        String nomeMedico = leitura.nextLine();
+        System.out.print("\nDigite o nome do paciente: ");
+        String nomePaciente = leitura.nextLine();
+        int indice = dados.encontraPaciente(nomePaciente);
+        if(indice != -1) {
+            System.out.print("\nDigite o tipo da consulta: ");
+            String tipo = leitura.nextLine();
+
+            novaConsulta.setData(data);
+            novaConsulta.setHorario(horario);
+            novaConsulta.setMedico(nomeMedico);
+            novaConsulta.setPaciente(dados.getPaciente(indice));
+            novaConsulta.setTipo(tipo);
+
+            dados.adicionaConsulta(novaConsulta);
+
+            System.out.println("\nConsulta cadastrado com sucesso");
+        } else {
+            System.out.println("\nPaciente não encontrado");
+        }
     }
     
     public void atualizaConsulta(Dados dados) {
-        
+        Scanner leitura = new Scanner(System.in);
+        System.out.print("\nDigite o Id da consulta a ser atualizada: ");
+        int id = leitura.nextInt();
+        leitura.nextLine();
+        int indice = dados.encontraConsulta(id);
+        if(indice != -1) {
+            System.out.print("\nDigite as informações a serem atualizadas");
+            System.out.print("\nPrecione \"Enter\", caso nao queira alterar uma informação");
+            System.out.print("\nDigite a data da consulta: ");
+            String data = leitura.nextLine();
+            System.out.print("\nDigite o horario da consulta: ");
+            String horario = leitura.nextLine();
+            System.out.print("\nDigite o tipo da consulta: ");
+            String tipo = leitura.nextLine();
+            System.out.print("\nDigite o nome do medico: ");
+            String nomeMedico = leitura.nextLine();
+            System.out.print("\nDigite o nome do paciente: ");
+            String nomePaciente = leitura.nextLine();
+            if(!nomePaciente.equals("")) {
+                int indicePaciente = dados.encontraPaciente(nomePaciente);
+                if(indicePaciente != -1) {
+                    Paciente paciente = dados.getPaciente(indicePaciente);
+                    dados.atualizaConsulta(indice, data, horario, nomeMedico, paciente, tipo);
+                    System.out.println("\nConsulta atualizado com sucesso");
+                } else {
+                    System.out.println("\nPaciente não encontrado");
+                }
+            } else {
+                dados.atualizaConsulta(indice, data, horario, nomeMedico, null, tipo);
+                System.out.println("\nConsulta atualizado com sucesso");
+            }
+        } else {
+            System.out.println("\nConsulta não encontrado");
+        }
     }
     
     public void removeConsulta(Dados dados) {
-        
+        Scanner leitura = new Scanner(System.in);
+        System.out.print("\nDigite o nome da consulta a ser removida: ");
+        int id = leitura.nextInt();
+        leitura.nextLine();
+        int indice = dados.encontraConsulta(id);
+        if(indice != -1) {
+            dados.removeConsulta(indice);
+            System.out.println("\nConsulta removida com sucesso");
+        } else {
+            System.out.println("\nConsutla não encontrada");
+        }
     }
     
     public void gerarRelatorio() {

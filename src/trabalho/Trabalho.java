@@ -82,6 +82,7 @@ public class Trabalho {
                             break;
                         case 0:
                             dados.listaPacientes();
+                            dados.listaConsultas();
                             break;
                         default:
                             System.out.println("Opcao invalidada");
