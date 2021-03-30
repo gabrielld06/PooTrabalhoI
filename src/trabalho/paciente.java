@@ -16,7 +16,8 @@ public class Paciente {
     private String endereco;
     private String contato;
     private String convenio;
-    private DadosAdicionais dadosAdicionais;   
+    private DadosAdicionais dadosAdicionais;
+    private Prontuario prontuario;
     
     public Paciente() {
         
@@ -69,7 +70,13 @@ public class Paciente {
     public void setDadosAdicionais(DadosAdicionais dadosAdicionais) {
         this.dadosAdicionais = dadosAdicionais;
     }
+   
+    public Prontuario getProntuario(){
+        return this.prontuario;
+    }
     
-    
+    public void setProntuario(Prontuario prontuario){
+        this.prontuario = prontuario;
+    }
     
  }
