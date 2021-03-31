@@ -167,6 +167,10 @@ public class Medico extends Usuario {
         }
     }
     
+    public void putinha() {
+        
+    }
+    
     public void gerarRelatorio() {
         
     }
