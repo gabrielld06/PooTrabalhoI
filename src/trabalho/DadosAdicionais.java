@@ -28,7 +28,7 @@ public class DadosAdicionais {
             this.fuma = true;
         }else if (fuma.equals("N") || fuma.equals("n")){
             this.fuma = false;
-        };
+        }
     }
        
     public boolean getBebe(){
@@ -40,7 +40,7 @@ public class DadosAdicionais {
             this.bebe = true;
         }else if (bebe.equals("N") || bebe.equals("n")){
             this.bebe = false;
-        };
+        }
     }
     
     public double getColesterol(){
@@ -68,7 +68,7 @@ public class DadosAdicionais {
             this.doençaCardiaca = true;
         }else if (doençaCardiaca.equals("N") || doençaCardiaca.equals("n")){
             this.doençaCardiaca = false;
-        };
+        }
     }
     
     public String getCirurgias(){

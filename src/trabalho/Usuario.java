@@ -47,4 +47,8 @@ public class Usuario {
         
     }
     
+    public void enviarMensagens() {
+        
+    }
+    
 }

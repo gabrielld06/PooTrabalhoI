@@ -5,6 +5,8 @@
  */
 package trabalho;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 /**
@@ -97,7 +99,7 @@ public class Dados {
     }
 
     public int encontraConsulta(int id) {
-        for (int i = 0; i < listaPacientes.size(); i++) {
+        for (int i = 0; i < listaConsultas.size(); i++) {
             if (listaConsultas.get(i).getIdConsulta() == id) {
                 return i;
             }
@@ -123,8 +125,8 @@ public class Dados {
         }
     }
 
-    public void atualizaConsulta(int i, String data, String horario, String medico, Paciente paciente, String tipo) {
-        if (!data.equals("")) {
+    public void atualizaConsulta(int i, LocalDate data, String horario, String medico, Paciente paciente, String tipo) {
+        if (!(data.toString().equals("0001-01-01"))) {
             listaConsultas.get(i).setData(data);
         }
         if (!horario.equals("")) {
@@ -203,6 +205,16 @@ public class Dados {
 
     public Paciente getPaciente(int i) {
         return listaPacientes.get(i);
+    }
+    
+    public ArrayList<Consulta> getPacientesDiaSeguinte() {
+        ArrayList<Consulta> consultas = new ArrayList();
+        for(Consulta i : listaConsultas) {
+            if(i.getData() == LocalDate.now().plusDays(1)) {
+                consultas.add(i);
+            }
+        }
+        return consultas;
     }
 
 }
