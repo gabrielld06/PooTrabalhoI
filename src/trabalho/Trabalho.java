@@ -84,6 +84,9 @@ public class Trabalho {
                         case 8:
                             System.out.println("Finalizando sessão");
                             break;
+                        case 9:
+                            usuario.enviarMensagens(dados);
+                            break;
                         case 0:
                             dados.listaPacientes();
                             dados.listaConsultas();
@@ -93,7 +96,7 @@ public class Trabalho {
                     }
                 } while(opcaoMenu != 8);
             }
-        } while(opcaoUsuario != 3);
+        } while(opcaoUsuario != 4);
 
         leitura.close();
     }

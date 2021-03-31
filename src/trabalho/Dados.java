@@ -107,21 +107,29 @@ public class Dados {
         return -1;
     }
 
-    public void atualizaPaciente(int i, String novoNome, String dataNascimento, String endereco, String contato, String convenio) {
+    public void atualizaPaciente(int i, String novoNome, String dataNascimento, String endereco, Contato contato, String convenio) {
+        Paciente paciente = listaPacientes.get(i);
         if (!novoNome.equals("")) {
-            listaPacientes.get(i).setNome(novoNome);
+            paciente.setNome(novoNome);
         }
         if (!dataNascimento.equals("")) {
-            listaPacientes.get(i).setDataNascimento(dataNascimento);
+            paciente.setDataNascimento(dataNascimento);
         }
         if (!endereco.equals("")) {
-            listaPacientes.get(i).setEndereco(endereco);
+            paciente.setEndereco(endereco);
         }
-        if (!contato.equals("")) {
-            listaPacientes.get(i).setContato(contato);
+        if (!contato.getEmail().equals("") && contato.getTelefone().equals("")) {
+            Contato contatoNovo = new Contato(paciente.getContato().getTelefone(), contato.getEmail());
+            paciente.setContato(contatoNovo);
+        } else if (!contato.getTelefone().equals("") && contato.getEmail().equals("")) {
+            Contato contatoNovo = new Contato(contato.getTelefone(), paciente.getContato().getEmail());
+            paciente.setContato(contatoNovo);
+        } else if (!contato.getEmail().equals("") && !contato.getTelefone().equals("")) {
+            Contato contatoNovo = new Contato(contato.getTelefone(), contato.getEmail());
+            paciente.setContato(contatoNovo);
         }
         if (!convenio.equals("")) {
-            listaPacientes.get(i).setConvenio(convenio);
+            paciente.setConvenio(convenio);
         }
     }
 
@@ -210,7 +218,7 @@ public class Dados {
     public ArrayList<Consulta> getPacientesDiaSeguinte() {
         ArrayList<Consulta> consultas = new ArrayList();
         for(Consulta i : listaConsultas) {
-            if(i.getData() == LocalDate.now().plusDays(1)) {
+            if(i.getData().equals(LocalDate.now().plusDays(1))) {
                 consultas.add(i);
             }
         }

@@ -41,8 +41,13 @@ public class Secretaria extends Usuario {
         String dataNascimento = leitura.nextLine();
         System.out.print("\nDigite o endereco do paciente: ");
         String endereco = leitura.nextLine();
-        System.out.print("\nDigite o contato do paciente: ");
-        String contato = leitura.nextLine();
+        System.out.print("\nDigite o contato do paciente:");
+        System.out.print("\nPrecione \"Enter\", caso nao queira inserir um dos metodos");
+        System.out.print("\nTe↕efone: ");
+        String contatoTelefone = leitura.nextLine();
+        System.out.print("\nEmail: ");
+        String contatoEmail = leitura.nextLine();
+        Contato contato = new Contato(contatoTelefone, contatoEmail);
         System.out.print("\nDigite o convenio do paciente: ");
         String convenio = leitura.nextLine();
         
@@ -72,7 +77,11 @@ public class Secretaria extends Usuario {
             System.out.print("\nDigite o novo endereco do paciente: ");
             String endereco = leitura.nextLine();
             System.out.print("\nDigite o novo contato do paciente: ");
-            String contato = leitura.nextLine();
+            System.out.print("\nTe↕efone: ");
+            String contatoTelefone = leitura.nextLine();
+            System.out.print("\nEmail: ");
+            String contatoEmail = leitura.nextLine();
+            Contato contato = new Contato(contatoTelefone, contatoEmail);
             System.out.print("\nDigite o novo convenio do paciente: ");
             String convenio = leitura.nextLine();
             

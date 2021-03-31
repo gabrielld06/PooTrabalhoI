@@ -14,7 +14,7 @@ public class Paciente {
     private String nome;
     private String dataNascimento;
     private String endereco;
-    private String contato;
+    private Contato contato;
     private String convenio;
     private DadosAdicionais dadosAdicionais;
     private Prontuario prontuario;
@@ -47,11 +47,11 @@ public class Paciente {
         this.endereco = endereco;
     }
 
-    public String getContato() {
+    public Contato getContato() {
         return contato;
     }
 
-    public void setContato(String contato) {
+    public void setContato(Contato contato) {
         this.contato = contato;
     }
 

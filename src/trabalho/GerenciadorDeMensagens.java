@@ -17,14 +17,28 @@ public class GerenciadorDeMensagens extends Usuario {
         
     }
     
+    public void menu() {
+        System.out.println("\n======= MENU =======");
+        System.out.println("1 - Enviar mensagens");
+        System.out.println("2 - Sair");
+        System.out.print("Insira a opcao: ");
+    }
+    
     public void enviarMensagens(Dados dados) {
         ArrayList<Consulta> listaConsultasDiaSeguinte = dados.getPacientesDiaSeguinte();
+        String email;
+        String telefone;
         if(!listaConsultasDiaSeguinte.isEmpty()) {
             for(Consulta i : listaConsultasDiaSeguinte) {
-                if(i.getPaciente().getContato().equals("Telefone")) {
-                    System.out.println("SMS enviado");
-                } else {
-                    System.out.println("Email enviado");
+                email = i.getPaciente().getContato().getEmail();
+                telefone = i.getPaciente().getContato().getTelefone();
+                if(email.equals("") && !telefone.equals("")) {
+                    System.out.println("SMS enviado para " + telefone);
+                } else if(!email.equals("") && telefone.equals("")) {
+                    System.out.println("Email enviado " + email);
+                } else if(!email.equals("") && !telefone.equals("")) {
+                    System.out.println("SMS enviado " + telefone);
+                    System.out.println("Email enviado " + email);
                 }
             }
         }

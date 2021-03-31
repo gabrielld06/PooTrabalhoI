@@ -47,7 +47,7 @@ public class Usuario {
         
     }
     
-    public void enviarMensagens() {
+    public void enviarMensagens(Dados dados) {
         
     }
     
