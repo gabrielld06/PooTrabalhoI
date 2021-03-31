@@ -172,7 +172,7 @@ public class Medico extends Usuario {
     }
     
     public void gerarRelatorio() {
-        
+        System.out.println("careca");
     }
     
 }
