@@ -52,4 +52,8 @@ public class TipoUsuario {
         usuario.gerarRelatorio();
     }
     
+    public void enviarMensagens() {
+        usuario.enviarMensagens();
+    }
+    
 }

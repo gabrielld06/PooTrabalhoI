@@ -24,8 +24,8 @@ public class Consulta {
         
     }
 
-    public String getData() {
-        return data.toString();
+    public LocalDate getData() {
+        return data;
     }
 
     public void setData(LocalDate data) {

@@ -21,7 +21,8 @@ public class Trabalho {
         System.out.println("Selecione o tipo de usuario");
         System.out.println("1 - Secretaria");
         System.out.println("2 - Medico");
-        System.out.println("3 - Sair");
+        System.out.println("3 - Gerenciador de Mensagens");
+        System.out.println("4 - Sair");
     }
     
     public static TipoUsuario configurarUsuario(int opcao) {
@@ -33,6 +34,9 @@ public class Trabalho {
                 Medico medico = new Medico();
                 return new TipoUsuario(medico);
             case 3:
+                GerenciadorDeMensagens gerenciador = new GerenciadorDeMensagens();
+                return new TipoUsuario(gerenciador);
+            case 4:
                 System.out.println("Finalizando programa");
                 break;
             default:

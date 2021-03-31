@@ -206,5 +206,15 @@ public class Dados {
     public Paciente getPaciente(int i) {
         return listaPacientes.get(i);
     }
+    
+    public ArrayList<Consulta> getPacientesDiaSeguinte() {
+        ArrayList<Consulta> consultas = new ArrayList();
+        for(Consulta i : listaConsultas) {
+            if(i.getData() == LocalDate.now().plusDays(1)) {
+                consultas.add(i);
+            }
+        }
+        return consultas;
+    }
 
 }
