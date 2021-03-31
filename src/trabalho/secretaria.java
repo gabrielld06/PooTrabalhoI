@@ -5,6 +5,7 @@
  */
 package trabalho;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
@@ -99,8 +100,13 @@ public class Secretaria extends Usuario {
     public void cadastraConsulta(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         Consulta novaConsulta = new Consulta();
-        System.out.print("\nDigite a data da consulta: ");
-        String data = leitura.nextLine();
+        System.out.print("\nDigite a data da consulta no formato \"aaaa-mm-dd\":");
+        LocalDate data = LocalDate.of(0001,01,01);
+        try {
+            data = LocalDate.parse(leitura.nextLine());
+        } catch(Exception ex) {
+            System.out.println("Formato invalido");
+        }
         System.out.print("\nDigite o horario da consulta: ");
         String horario = leitura.nextLine();
         System.out.print("\nDigite o nome do medico: ");
@@ -135,8 +141,16 @@ public class Secretaria extends Usuario {
         if(indice != -1) {
             System.out.print("\nDigite as informações a serem atualizadas");
             System.out.print("\nPrecione \"Enter\", caso nao queira alterar uma informação");
-            System.out.print("\nDigite a data da consulta: ");
-            String data = leitura.nextLine();
+            System.out.print("\nDigite a data da consulta no formato \"aaaa-mm-dd\":");
+            String dataNova = leitura.nextLine();
+            LocalDate data = LocalDate.of(0001,01,01);
+            if(!dataNova.isBlank()) {
+                try {
+                    data = LocalDate.parse(dataNova);
+                } catch(Exception ex) {
+                    System.out.println("Formato invalido");
+                }
+            }
             System.out.print("\nDigite o horario da consulta: ");
             String horario = leitura.nextLine();
             System.out.print("\nDigite o tipo da consulta: ");
@@ -145,7 +159,7 @@ public class Secretaria extends Usuario {
             String nomeMedico = leitura.nextLine();
             System.out.print("\nDigite o nome do paciente: ");
             String nomePaciente = leitura.nextLine();
-            if(!nomePaciente.equals("")) {
+            if(!nomePaciente.isBlank()) {
                 int indicePaciente = dados.encontraPaciente(nomePaciente);
                 if(indicePaciente != -1) {
                     Paciente paciente = dados.getPaciente(indicePaciente);

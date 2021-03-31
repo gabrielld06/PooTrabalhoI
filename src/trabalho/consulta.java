@@ -5,6 +5,7 @@
  */
 package trabalho;
 
+import java.time.LocalDate;
 
 /**
  *
@@ -12,7 +13,7 @@ package trabalho;
  */
 public class Consulta {
     private int idConsulta;
-    private String data;
+    private LocalDate data;
     private String horario;
     private String medico;
     private Paciente paciente;
@@ -24,10 +25,10 @@ public class Consulta {
     }
 
     public String getData() {
-        return data;
+        return data.toString();
     }
 
-    public void setData(String data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
