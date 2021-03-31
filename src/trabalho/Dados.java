@@ -216,5 +216,14 @@ public class Dados {
         }
         return consultas;
     }
-
+    
+    public ArrayList<Consulta> getClientesMes() {
+        ArrayList<Consulta> clientesMes = new ArrayList();
+        for(Consulta i : listaConsultas) {
+            if((i.getData().getMonth() == LocalDate.now().getMonth()) && (i.getData().getYear() == LocalDate.now().getYear()) && (i.getData().getDayOfMonth() < LocalDate.now().getDayOfMonth())){
+                clientesMes.add(i);
+            }
+        }
+        return clientesMes;
+    }
 }

@@ -5,6 +5,7 @@
  */
 package trabalho;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -167,8 +168,91 @@ public class Medico extends Usuario {
         }
     }
     
-    public void gerarRelatorio() {
-        System.out.println("careca");
+    public void gerarRelatorioReceita(Dados dados){
+        Scanner leitura = new Scanner(System.in);
+        System.out.print("\nDigite o nome do paciente: ");
+        String nome = leitura.nextLine();
+        int indice = dados.encontraPaciente(nome);
+        if (indice != -1) {
+            System.out.print("\nDigite a receita do paciente:");
+            String receita = leitura.nextLine();
+            System.out.print("\nReceita do paciente " + nome + ":");
+            System.out.println("\n" + receita);
+        }else{
+            System.out.println("\nPaciente não encontrado");
+        }
     }
     
+    public void gerarRelatorioAtestado(Dados dados){
+        Scanner leitura = new Scanner(System.in);
+        System.out.print("\nDigite o nome do paciente: ");
+        String nome = leitura.nextLine();
+        int indice = dados.encontraPaciente(nome);
+        if (indice != -1) {
+            System.out.print("\nDigite o atestado do paciente:");
+            String atestado = leitura.nextLine();
+            System.out.print("\nAtestado do paciente " + nome + ":");
+            System.out.println("\n" + atestado);
+        }else{
+            System.out.println("\nPaciente não encontrado");
+        }
+    }
+    
+    public void gerarRelatorioAcompanhamento(Dados dados){
+        Scanner leitura = new Scanner(System.in);
+        System.out.print("\nDigite o nome do paciente: ");
+        String nome = leitura.nextLine();
+        int indice = dados.encontraPaciente(nome);
+        if (indice != -1) {
+            System.out.print("\nDigite a declaração de acompanhamento:");
+            String decAcompanhamento = leitura.nextLine();
+            System.out.print("\nDeclaração de acompanhamento do paciente " + nome + ":");
+            System.out.println("\n" + decAcompanhamento);
+        }else{
+            System.out.println("\nPaciente não encontrado");
+        }
+    }
+    
+    
+    public void gerarRelatorio(Dados dados) {
+        Scanner leitura = new Scanner(System.in);
+        int opcaoMenu;
+        do {
+            System.out.println("Selecione o relatório para gerar:");
+            System.out.println("1 - Gerar receita");
+            System.out.println("2 - Gerar atestado");
+            System.out.println("3 - Gerar declaração de acompanhamento");
+            System.out.println("4 - Gerar clientes atendidos no mês");
+            System.out.println("5 - Sair");
+            opcaoMenu = leitura.nextInt();
+            switch (opcaoMenu) {
+                case 1:
+                    gerarRelatorioReceita(dados);
+                    break;
+                case 2:
+                    gerarRelatorioAtestado(dados);
+                    break;
+                case 3:
+                    gerarRelatorioAcompanhamento(dados);
+                    break;
+                case 4:
+                    ArrayList<Consulta> clientesMes = new ArrayList();
+                    clientesMes = dados.getClientesMes();
+                    if (!clientesMes.isEmpty()) {
+                        System.out.println("\nClientes atendidos no mês: ");
+                        for (int i = 0; i < clientesMes.size(); i++) {
+                            System.out.println((i + 1) + " - " + clientesMes.get(i).getPaciente().getNome());
+                        }
+                    }else{
+                        System.out.println("\nNenhum cliente foi atendido neste mês.");
+                    }
+                    break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Opcao invalidada");
+            }
+        } while (opcaoMenu != 5);
+    }
+
 }

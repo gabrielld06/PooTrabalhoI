@@ -43,7 +43,7 @@ public class Usuario {
         
     }
     
-    public void gerarRelatorio() {
+    public void gerarRelatorio(Dados dados) {
         
     }
     

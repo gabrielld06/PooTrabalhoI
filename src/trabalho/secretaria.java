@@ -144,7 +144,7 @@ public class Secretaria extends Usuario {
             System.out.print("\nDigite a data da consulta no formato \"aaaa-mm-dd\":");
             String dataNova = leitura.nextLine();
             LocalDate data = LocalDate.of(0001,01,01);
-            if(!dataNova.isBlank()) {
+            if(!dataNova.equals("")) {
                 try {
                     data = LocalDate.parse(dataNova);
                 } catch(Exception ex) {
@@ -159,7 +159,7 @@ public class Secretaria extends Usuario {
             String nomeMedico = leitura.nextLine();
             System.out.print("\nDigite o nome do paciente: ");
             String nomePaciente = leitura.nextLine();
-            if(!nomePaciente.isBlank()) {
+            if(!nomePaciente.equals("")) {
                 int indicePaciente = dados.encontraPaciente(nomePaciente);
                 if(indicePaciente != -1) {
                     Paciente paciente = dados.getPaciente(indicePaciente);

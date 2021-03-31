@@ -79,7 +79,7 @@ public class Trabalho {
                             usuario.removeConsulta(dados);
                             break;
                         case 7:
-                            usuario.gerarRelatorio();
+                            usuario.gerarRelatorio(dados);
                             break;
                         case 8:
                             System.out.println("Finalizando sessão");
@@ -93,7 +93,7 @@ public class Trabalho {
                     }
                 } while(opcaoMenu != 8);
             }
-        } while(opcaoUsuario != 3);
+        } while(opcaoUsuario != 4);
 
         leitura.close();
     }
