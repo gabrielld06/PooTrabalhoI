@@ -48,8 +48,8 @@ public class TipoUsuario {
         usuario.removeConsulta(dados);
     }
     
-    public void gerarRelatorio() {
-        usuario.gerarRelatorio();
+    public void gerarRelatorio(Dados dados) {
+        usuario.gerarRelatorio(dados);
     }
     
     public void enviarMensagens(Dados dados) {

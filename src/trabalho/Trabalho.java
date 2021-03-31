@@ -79,7 +79,7 @@ public class Trabalho {
                             usuario.removeConsulta(dados);
                             break;
                         case 7:
-                            usuario.gerarRelatorio();
+                            usuario.gerarRelatorio(dados);
                             break;
                         case 8:
                             System.out.println("Finalizando sessão");
