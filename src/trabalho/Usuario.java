@@ -15,8 +15,8 @@ public class Usuario {
         
     }
     
-    public void menu() {
-        
+    public boolean menu(Dados dados) {
+        return true;
     }
     
     public void cadastraPaciente(Dados dados) {

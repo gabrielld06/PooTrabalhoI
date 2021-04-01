@@ -18,7 +18,10 @@ public class Medico extends Usuario {
         
     }
     
-    public void menu() {
+    // Imprime em tela o menu de opções do usuario Secretaria 
+    // e gerencia a interação com o sistema
+    public boolean menu(Dados dados) {
+        Scanner leitura = new Scanner(System.in);
         System.out.println("\n================== MENU ==================");
         System.out.println("1 - Cadastrar dados adicionais do Paciente");
         System.out.println("2 - Atualizar dados adicionais do Paciente");
@@ -29,6 +32,41 @@ public class Medico extends Usuario {
         System.out.println("7 - Gerar Relatorio Medico");
         System.out.println("8 - Sair");
         System.out.print("Insira a opcao: ");
+        int opcaoMenu = leitura.nextInt();
+        leitura.nextLine();
+        switch(opcaoMenu) {
+            case 1:
+                cadastraPaciente(dados);
+                break;
+            case 2:
+                atualizaPaciente(dados);
+                break;
+            case 3:
+                removePaciente(dados);
+                break;
+            case 4:
+                cadastraConsulta(dados);
+               break;
+            case 5:
+                atualizaConsulta(dados);
+                break;
+            case 6:
+                removeConsulta(dados);
+                break;
+            case 7:
+                gerarRelatorio(dados);
+                break;
+            case 8:
+                System.out.println("Finalizando sessão");
+                return false;
+            case 0:
+                dados.listaPacientes();
+                dados.listaConsultas();
+                break;
+            default:
+                System.out.println("Opcao invalida");
+            }
+        return true;
     }
     
     public void cadastraPaciente(Dados dados) {

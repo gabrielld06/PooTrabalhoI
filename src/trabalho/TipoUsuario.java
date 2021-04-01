@@ -20,40 +20,7 @@ public class TipoUsuario {
         
     }
     
-    public void menu() {
-        usuario.menu();
+    public boolean menu(Dados dados) {
+        return usuario.menu(dados);
     }
-    
-    public void cadastraPaciente(Dados dados) {
-        usuario.cadastraPaciente(dados);
-    }
-    
-    public void atualizaPaciente(Dados dados) {
-        usuario.atualizaPaciente(dados);
-    }
-    
-    public void removePaciente(Dados dados) {
-        usuario.removePaciente(dados);
-    }
-    
-    public void cadastraConsulta(Dados dados) {
-        usuario.cadastraConsulta(dados);
-    }
-    
-    public void atualizaConsulta(Dados dados) {
-        usuario.atualizaConsulta(dados);
-    }
-    
-    public void removeConsulta(Dados dados) {
-        usuario.removeConsulta(dados);
-    }
-    
-    public void gerarRelatorio(Dados dados) {
-        usuario.gerarRelatorio(dados);
-    }
-    
-    public void enviarMensagens(Dados dados) {
-        usuario.enviarMensagens(dados);
-    }
-    
 }

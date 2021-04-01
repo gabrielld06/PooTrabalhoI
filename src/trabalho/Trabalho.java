@@ -40,7 +40,7 @@ public class Trabalho {
                 System.out.println("Finalizando programa");
                 break;
             default:
-                System.out.println("Opcao invalidada");
+                System.out.println("Opcao invalida");
         }
         return null;
     }
@@ -49,52 +49,17 @@ public class Trabalho {
     public static void main(String[] args) {
         Scanner leitura = new Scanner(System.in);
         Dados dados = new Dados();
-        int opcaoUsuario, opcaoMenu;
+        int opcaoUsuario;
         
         do {
             menuEscolhaUsuario();
             opcaoUsuario = leitura.nextInt();
             TipoUsuario usuario = configurarUsuario(opcaoUsuario);
+            boolean continua;
             if(usuario != null) {
                 do {
-                    usuario.menu();
-                    opcaoMenu = leitura.nextInt();
-                    switch(opcaoMenu) {
-                        case 1:
-                            usuario.cadastraPaciente(dados);
-                            break;
-                        case 2:
-                            usuario.atualizaPaciente(dados);
-                            break;
-                        case 3:
-                            usuario.removePaciente(dados);
-                            break;
-                        case 4:
-                            usuario.cadastraConsulta(dados);
-                            break;
-                        case 5:
-                            usuario.atualizaConsulta(dados);
-                            break;
-                        case 6:
-                            usuario.removeConsulta(dados);
-                            break;
-                        case 7:
-                            usuario.gerarRelatorio(dados);
-                            break;
-                        case 8:
-                            System.out.println("Finalizando sessão");
-                            break;
-                        case 9:
-                            usuario.enviarMensagens(dados);
-                            break;
-                        case 0:
-                            dados.listaPacientes();
-                            dados.listaConsultas();
-                            break;
-                        default:
-                            System.out.println("Opcao invalidada");
-                    }
-                } while(opcaoMenu != 8);
+                    continua = usuario.menu(dados);
+                } while(continua);
             }
         } while(opcaoUsuario != 4);
 

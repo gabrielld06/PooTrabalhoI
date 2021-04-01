@@ -6,6 +6,7 @@
 package trabalho;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -19,7 +20,10 @@ public class Secretaria extends Usuario {
         
     }
     
-    public void menu() {
+    // Imprime em tela o menu de opções do usuario Secretaria 
+    // e gerencia a interação com o sistema
+    public boolean menu(Dados dados) {
+        Scanner leitura = new Scanner(System.in);
         System.out.println("\n======== MENU ========");
         System.out.println("1 - Cadastrar Paciente");
         System.out.println("2 - Atualizar Paciente");
@@ -30,8 +34,44 @@ public class Secretaria extends Usuario {
         System.out.println("7 - Gerar Relatorio de Consulta");
         System.out.println("8 - Sair");
         System.out.print("Insira a opcao: ");
+        int opcaoMenu = leitura.nextInt();
+        leitura.nextLine();
+        switch(opcaoMenu) {
+            case 1:
+                cadastraPaciente(dados);
+                break;
+            case 2:
+                atualizaPaciente(dados);
+                break;
+            case 3:
+                removePaciente(dados);
+                break;
+            case 4:
+                cadastraConsulta(dados);
+               break;
+            case 5:
+                atualizaConsulta(dados);
+                break;
+            case 6:
+                removeConsulta(dados);
+                break;
+            case 7:
+                gerarRelatorio(dados);
+                break;
+            case 8:
+                System.out.println("Finalizando sessão");
+                return false;
+            case 0:
+                dados.listaPacientes();
+                dados.listaConsultas();
+                break;
+            default:
+                System.out.println("Opcao invalida");
+            }
+        return true;
     }
     
+    // Recebe as informações do usuario para realizar o cadastro de um novo paciente nos dados
     public void cadastraPaciente(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         Paciente novoPaciente = new Paciente();
@@ -62,6 +102,7 @@ public class Secretaria extends Usuario {
         System.out.println("\nPaciente cadastrado com sucesso");
     }
     
+    // Recebe as informações do usuario para atualizar um paciente nos dados
     public void atualizaPaciente(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a ser atualizado: ");
@@ -93,6 +134,8 @@ public class Secretaria extends Usuario {
         }
     }
     
+    // Recebe uma string do usuario e remove um paciente com esse nome dos dados
+    // caso exista um, caso contrario, apenas imprime "Paciente não encontrado"
     public void removePaciente(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a ser removido: ");
@@ -106,6 +149,7 @@ public class Secretaria extends Usuario {
         }
     }
     
+    // Recebe as informações do usuario para realizar o cadastro de uma nova consulta nos dados
     public void cadastraConsulta(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         Consulta novaConsulta = new Consulta();
@@ -135,12 +179,14 @@ public class Secretaria extends Usuario {
 
             dados.adicionaConsulta(novaConsulta);
 
-            System.out.println("\nConsulta cadastrado com sucesso");
+            System.out.println("\nConsulta cadastrada com sucesso");
+            System.out.println("ID da consulta: " + (dados.getIdConsulta()-1));
         } else {
             System.out.println("\nPaciente não encontrado");
         }
     }
     
+    // Recebe as informações do usuario para atualizar uma consulta nos dados
     public void atualizaConsulta(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o Id da consulta a ser atualizada: ");
@@ -173,19 +219,21 @@ public class Secretaria extends Usuario {
                 if(indicePaciente != -1) {
                     Paciente paciente = dados.getPaciente(indicePaciente);
                     dados.atualizaConsulta(indice, data, horario, nomeMedico, paciente, tipo);
-                    System.out.println("\nConsulta atualizado com sucesso");
+                    System.out.println("\nConsulta atualizada com sucesso");
                 } else {
                     System.out.println("\nPaciente não encontrado");
                 }
             } else {
                 dados.atualizaConsulta(indice, data, horario, nomeMedico, null, tipo);
-                System.out.println("\nConsulta atualizado com sucesso");
+                System.out.println("\nConsulta atualizada com sucesso");
             }
         } else {
-            System.out.println("\nConsulta não encontrado");
+            System.out.println("\nConsulta não encontrada");
         }
     }
     
+    // Recebe um int do usuario e remove uma consulta com esse ID dos dados
+    // caso exista um, caso contrario, apenas imprime "Consulta não encontrada"
     public void removeConsulta(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome da consulta a ser removida: ");
@@ -196,12 +244,38 @@ public class Secretaria extends Usuario {
             dados.removeConsulta(indice);
             System.out.println("\nConsulta removida com sucesso");
         } else {
-            System.out.println("\nConsutla não encontrada");
+            System.out.println("\nConsulta não encontrada");
         }
     }
     
-    public void gerarRelatorio() {
-        
+    // Gera o relatorio de consultas relativas ao dia seguinte
+    public void gerarRelatorio(Dados dados) {
+        Scanner leitura = new Scanner(System.in);
+        System.out.println("\nFiltros disponiveis para busca:");
+        System.out.println("1 - Email");
+        System.out.println("2 - Telefone");
+        System.out.println("0 - Nenhum");
+        System.out.print("Digite o filtro de busca: ");
+        int filtro = leitura.nextInt();
+        leitura.nextLine();
+        System.out.println("");
+        ArrayList<Consulta> consultasDiaSeguinte = dados.getConsultasDiaSeguinte(filtro);
+        if(!consultasDiaSeguinte.isEmpty()) {
+            System.out.println("Relatorio de consultas marcadas para amanhã");
+            System.out.println("-------------------------------------------");
+            int i = 1;
+            for(Consulta consulta : consultasDiaSeguinte) {
+                System.out.println(i + " - " + consulta.getIdConsulta());
+                System.out.println("Horario: " + consulta.getHorario());
+                System.out.println("Medico: " + consulta.getMedico());
+                System.out.println("Paciente: " + consulta.getPaciente().getNome());
+                System.out.println("Tipo: " + consulta.getTipo());
+                System.out.println("-------------------------------------------");
+                i++;
+            }
+        } else if (filtro >= 0 && filtro <= 2) {
+            System.out.println("Nenhuma consulta encontrada com o filtro selecionado");
+        }
     }
     
 }
