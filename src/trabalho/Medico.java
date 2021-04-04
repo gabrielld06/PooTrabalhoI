@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Gabriel
- */
 public class Medico extends Usuario {
     
     public Medico() {
         
     }
     
-    // Imprime em tela o menu de opções do usuario Secretaria 
+    // Imprime em tela o menu de opções do usuario Medico 
     // e gerencia a interação com o sistema
     public boolean menu(Dados dados) {
         Scanner leitura = new Scanner(System.in);
@@ -68,7 +59,8 @@ public class Medico extends Usuario {
             }
         return true;
     }
-    
+    // Recebe as informações do usuario para realizar o cadastro dos dados adicionais
+    // de um paciente
     public void cadastraPaciente(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         DadosAdicionais dadosAdicionais = new DadosAdicionais();
@@ -106,6 +98,8 @@ public class Medico extends Usuario {
         }
     }
     
+    // Recebe as informações do usuario para realizar a atualização dos dados adicionais
+    // de um paciente
     public void atualizaPaciente(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a atualizar os dados adicionais: ");
@@ -135,6 +129,8 @@ public class Medico extends Usuario {
         }
     }
     
+    // Recebe uma string do usuario e remove os dados adicionais do paciente com esse nome
+    // caso exista um, caso contrario, apenas imprime "Paciente não encontrado"
     public void removePaciente(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a remover os dados adicionais: ");
@@ -148,6 +144,7 @@ public class Medico extends Usuario {
         }
     }
     
+    // Recebe as informações do usuario para realizar o cadastro de um novo prontuário do paciente
     public void cadastraConsulta(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         Prontuario novoProntuario = new Prontuario();
@@ -172,6 +169,8 @@ public class Medico extends Usuario {
         }
     }
     
+    // Recebe uma string do usuario e atualiza o prontuário do paciente com esse nome
+    // caso exista um, caso contrario, apenas imprime "Paciente não encontrado"
     public void atualizaConsulta(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a atualizar o prontuário: ");
@@ -193,6 +192,8 @@ public class Medico extends Usuario {
         }
     }
     
+    // Recebe uma string do usuario e remove o prontuario do paciente com esse nome
+    // caso exista um, caso contrario, apenas imprime "Consulta não encontrada"
     public void removeConsulta(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a remover o prontuário: ");
@@ -206,6 +207,7 @@ public class Medico extends Usuario {
         }
     }
     
+    // Recebe as informações do usuário e imprime na tela a receita do paciente
     public void gerarRelatorioReceita(Dados dados){
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente: ");
@@ -221,6 +223,7 @@ public class Medico extends Usuario {
         }
     }
     
+    // Recebe as informações do usuário e imprime na tela o atestado do paciente
     public void gerarRelatorioAtestado(Dados dados){
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente: ");
@@ -236,6 +239,7 @@ public class Medico extends Usuario {
         }
     }
     
+    // Recebe as informações do usuário e imprime na tela a declaração de acompanhamento do paciente
     public void gerarRelatorioAcompanhamento(Dados dados){
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente: ");
@@ -251,7 +255,7 @@ public class Medico extends Usuario {
         }
     }
     
-    
+    // Gera os relatórios médico do paciente
     public void gerarRelatorio(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         int opcaoMenu;
