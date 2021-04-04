@@ -18,6 +18,8 @@ public class DadosAdicionais {
             this.fuma = true;
         }else if (fuma.equals("N") || fuma.equals("n")){
             this.fuma = false;
+        }else{
+            System.out.println("\nFumante: Digite apenas S para sim ou N para não, valor de Fumante não foi alterado.");
         }
     }
        
@@ -30,6 +32,8 @@ public class DadosAdicionais {
             this.bebe = true;
         }else if (bebe.equals("N") || bebe.equals("n")){
             this.bebe = false;
+        }else{
+            System.out.println("\nConsome álcool: Digite apenas S para sim ou N para não, valor de Consome álcool não foi alterado.");
         }
     }
     
@@ -38,7 +42,11 @@ public class DadosAdicionais {
     }
     
     public void setColesterol(String colesterol){
+        try {
         this.colesterol = Double.parseDouble(colesterol);
+        }catch(Exception e) {
+           System.out.println("\nValor do colesterol: Digite apenas números positivos, valor de colesterol não foi alterado.");
+        }
     }
     
     public String getDiabete(){
@@ -58,6 +66,8 @@ public class DadosAdicionais {
             this.doençaCardiaca = true;
         }else if (doençaCardiaca.equals("N") || doençaCardiaca.equals("n")){
             this.doençaCardiaca = false;
+        }else{
+            System.out.println("\nDoença cardiaca: Digite apenas S para sim ou N para não, valor de Doença Cardiaca não foi alterado.");
         }
     }
     

@@ -73,11 +73,11 @@ public class Medico extends Usuario {
             String fuma = leitura.nextLine();
             System.out.print("\nComsome álcool [S/N]: ");
             String bebe = leitura.nextLine();
-            System.out.print("\nValor do colesterol: ");
+            System.out.print("\nValor do colesterol (Apenas números positivos): ");
             String colesterol = leitura.nextLine();
             System.out.print("\nDiabete: ");
             String diabete = leitura.nextLine();
-            System.out.print("\nDoença cardíaca: ");
+            System.out.print("\nDoença cardíaca [S/N]: ");
             String doençaCardiaca = leitura.nextLine();
             System.out.print("\nCirurgias: ");
             String cirurgias = leitura.nextLine();
@@ -92,31 +92,31 @@ public class Medico extends Usuario {
             dadosAdicionais.setCirurgias(cirurgias);
             dadosAdicionais.setAlergias(alergias);
             dados.cadastraDadosAdicionais(indice, dadosAdicionais);
-            System.out.println("\nPaciente cadastrado com sucesso");
+            System.out.println("\nDados adicionais cadastrado com sucesso");
         } else {
             System.out.println("\nPaciente não encontrado");
         }
     }
     
     // Recebe as informações do usuario para realizar a atualização dos dados adicionais
-    // de um paciente
+    // de um paciente, caso exista um, caso contrario, apenas imprime "Paciente não encontrado ou não tem dados adicionais cadastrados"
     public void atualizaPaciente(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a atualizar os dados adicionais: ");
         String nome = leitura.nextLine();
-        int indice = dados.encontraPaciente(nome);
+        int indice = dados.encontraDadosAdicionais(nome);
         if(indice != -1) {
             System.out.print("\nDigite as informações a serem atualizadas");
             System.out.print("\nPrecione \"Enter\", caso nao queira alterar uma informação");
             System.out.print("\nFumante [S/N]: ");
             String fuma = leitura.nextLine();
-            System.out.print("\nComsome álcool [S/N]: ");
+            System.out.print("\nConsome álcool [S/N]: ");
             String bebe = leitura.nextLine();
-            System.out.print("\nValor do colesterol: ");
+            System.out.print("\nValor do colesterol (Apenas números positivos): ");
             String colesterol = leitura.nextLine();
             System.out.print("\nDiabete: ");
             String diabete = leitura.nextLine();
-            System.out.print("\nDoença cardíaca: ");
+            System.out.print("\nDoença cardíaca [S/N]: ");
             String doençaCardiaca = leitura.nextLine();
             System.out.print("\nCirurgias: ");
             String cirurgias = leitura.nextLine();
@@ -125,7 +125,7 @@ public class Medico extends Usuario {
             dados.atualizaDadosAdicionais(indice, fuma, bebe, colesterol, diabete, doençaCardiaca, cirurgias, alergias);
             System.out.println("\nProntuário atualizado com sucesso.");
         }else{
-            System.out.println("\nPaciente não encontrado");
+            System.out.println("\nPaciente não encontrado ou não tem dados adicionais cadastrados");
         }
     }
     
@@ -135,12 +135,12 @@ public class Medico extends Usuario {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a remover os dados adicionais: ");
         String nome = leitura.nextLine();
-        int indice = dados.encontraPaciente(nome);
+        int indice = dados.encontraDadosAdicionais(nome);
         if(indice != -1) {
             dados.removeDadosAdicionais(indice);
             System.out.println("\nDados adicionais do paciente removidos com sucesso.");
         }else{
-            System.out.println("\nPaciente não encontrado");
+            System.out.println("\nPaciente não encontrado ou não tem dados adicionais cadastrados");
         }
     }
     
@@ -170,12 +170,12 @@ public class Medico extends Usuario {
     }
     
     // Recebe uma string do usuario e atualiza o prontuário do paciente com esse nome
-    // caso exista um, caso contrario, apenas imprime "Paciente não encontrado"
+    // caso exista um, caso contrario, apenas imprime "Paciente não encontrado ou não tem prontuário cadastrado"
     public void atualizaConsulta(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a atualizar o prontuário: ");
         String nome = leitura.nextLine();
-        int indice = dados.encontraPaciente(nome);
+        int indice = dados.encontraProntuario(nome);
         if (indice != -1) {
             System.out.print("\nDigite as informações a serem atualizadas");
             System.out.print("\nPrecione \"Enter\", caso nao queira alterar uma informação");
@@ -188,22 +188,22 @@ public class Medico extends Usuario {
             dados.atualizaProntuario(indice, sintomas, diagnosticoDoenca, prescricaoTratamento);
             System.out.println("\nProntuário atualizado com sucesso");
         }else{
-            System.out.println("\nPaciente não encontrado");
+            System.out.println("\nPaciente não encontrado ou não tem prontuário cadastrado");
         }
     }
     
     // Recebe uma string do usuario e remove o prontuario do paciente com esse nome
-    // caso exista um, caso contrario, apenas imprime "Consulta não encontrada"
+    // caso exista um, caso contrario, apenas imprime "Paciente não encontrado ou não tem prontuário cadastrado"
     public void removeConsulta(Dados dados) {
         Scanner leitura = new Scanner(System.in);
         System.out.print("\nDigite o nome do paciente a remover o prontuário: ");
         String nome = leitura.nextLine();
-        int indice = dados.encontraPaciente(nome);
+        int indice = dados.encontraProntuario(nome);
         if (indice != -1) {
             dados.removeProntuario(indice);
             System.out.println("\nProntuário removido com sucesso");
         }else{
-            System.out.println("\nPaciente não encontrado");
+            System.out.println("\nPaciente não encontrado ou não tem prontuário cadastrado");
         }
     }
     

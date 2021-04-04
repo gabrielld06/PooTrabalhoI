@@ -41,6 +41,18 @@ public class Dados {
         listaPacientes.get(i).setProntuario(null);
     }
     
+    // Faz uma busca pelo prontuário de um paciente pelo nome nomePaciente no array listaPacientes
+    // e retorna seu índice caso encontrado ou -1 caso não encontrado
+    public int encontraProntuario(String nomePaciente){
+        int i = this.encontraPaciente(nomePaciente);
+        if (i != -1) {
+            if (listaPacientes.get(i).getProntuario() != null) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     // Realiza o cadastro de dados adicionais do paciente no indice i do ArrayList listaPacientes
     public void cadastraDadosAdicionais(int i, DadosAdicionais dadosAdicionais) {
         listaPacientes.get(i).setDadosAdicionais(dadosAdicionais);
@@ -77,6 +89,18 @@ public class Dados {
     // Exclui o prontuario do paciente no indice i do ArrayList listaPacientes
     public void removeDadosAdicionais(int i) {
         listaPacientes.get(i).setDadosAdicionais(null);
+    }
+    
+    // Faz uma busca pelos dados adicionais de um paciente pelo nome nomePaciente no array listaPacientes
+    // e retorna seu índice caso encontrado ou -1 caso não encontrado
+    public int encontraDadosAdicionais(String nomePaciente){
+        int i = this.encontraPaciente(nomePaciente);
+        if (i != -1) {
+            if (listaPacientes.get(i).getDadosAdicionais() != null) {
+                return i;
+            }
+        }
+        return -1;
     }
     
     // Realiza o cadastro de um paciente no ArrayList listaPacientes
