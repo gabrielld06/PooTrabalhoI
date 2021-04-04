@@ -11,18 +11,18 @@ public class Trabalho {
         System.out.println("4 - Sair");
     }
     
-    public static TipoUsuario configurarUsuario(int opcao) {
+    public static TipoUsuario configurarUsuario(String opcao) {
         switch(opcao) {
-            case 1:
+            case "1":
                 Secretaria secretaria = new Secretaria();
                 return new TipoUsuario(secretaria);
-            case 2:
+            case "2":
                 Medico medico = new Medico();
                 return new TipoUsuario(medico);
-            case 3:
+            case "3":
                 GerenciadorDeMensagens gerenciador = new GerenciadorDeMensagens();
                 return new TipoUsuario(gerenciador);
-            case 4:
+            case "4":
                 System.out.println("Finalizando programa");
                 break;
             default:
@@ -33,13 +33,13 @@ public class Trabalho {
     
 
     public static void main(String[] args) {
-        Scanner leitura = new Scanner(System.in);
         Dados dados = new Dados();
-        int opcaoUsuario;
+        Scanner leitura = new Scanner(System.in);
+        String opcaoUsuario;
         
         do {
             menuEscolhaUsuario();
-            opcaoUsuario = leitura.nextInt();
+            opcaoUsuario = leitura.nextLine();
             TipoUsuario usuario = configurarUsuario(opcaoUsuario);
             boolean continua;
             if(usuario != null) {
@@ -47,7 +47,7 @@ public class Trabalho {
                     continua = usuario.menu(dados);
                 } while(continua);
             }
-        } while(opcaoUsuario != 4);
+        } while(!opcaoUsuario.equals("4"));
 
         leitura.close();
     }

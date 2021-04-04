@@ -208,7 +208,8 @@ public class Dados {
                 System.out.println((i + 1) + " - " + paciente.getNome());
                 System.out.println("    " + paciente.getDataNascimento());
                 System.out.println("    " + paciente.getEndereco());
-                System.out.println("    " + paciente.getContato());
+                System.out.println("    " + paciente.getContato().getTelefone());
+                System.out.println("    " + paciente.getContato().getEmail());
                 System.out.println("    " + paciente.getConvenio());
                 Prontuario prontuario = paciente.getProntuario();
                 if (prontuario != null) {
@@ -241,7 +242,7 @@ public class Dados {
             for (int i = 0; i < listaConsultas.size(); i++) {
                 Consulta consulta = listaConsultas.get(i);
                 System.out.println((i + 1) + " - " + consulta.getIdConsulta());
-                System.out.println("    " + consulta.getData());
+                System.out.println("    " + consulta.getData().toString());
                 System.out.println("    " + consulta.getHorario());
                 System.out.println("    " + consulta.getMedico());
                 System.out.println("    " + consulta.getPaciente().getNome());

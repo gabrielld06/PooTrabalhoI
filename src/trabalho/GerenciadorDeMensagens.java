@@ -17,13 +17,12 @@ public class GerenciadorDeMensagens extends Usuario {
         System.out.println("1 - Enviar mensagens");
         System.out.println("2 - Sair");
         System.out.print("Insira a opcao: ");
-        int opcaoMenu = leitura.nextInt();
-        leitura.nextLine();
+        String opcaoMenu = leitura.nextLine();
         switch(opcaoMenu) {
-            case 1:
+            case "1":
                 enviarMensagens(dados);
                 break;
-            case 2:
+            case "2":
                 System.out.println("Finalizando sessão");
                 return false;
             default:

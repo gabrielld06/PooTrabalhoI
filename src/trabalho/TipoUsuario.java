@@ -2,7 +2,7 @@ package trabalho;
 
 public class TipoUsuario {
     private Usuario usuario;
-    
+
     public TipoUsuario(Usuario u) {
         this.usuario = u;
     }
